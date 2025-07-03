@@ -292,7 +292,7 @@ def make_adjacency_groups(
     try:
         return pd.to_numeric(groups).astype("Int64"), names
     except TypeError:
-        logger.warning(f"Erroneous outcome while computing adjacency groups: {groups}")
+        print(f"Erroneous outcome while computing adjacency groups: {groups}")
         return groups, names
 
 def condense_dataframe_by_groups(
@@ -325,14 +325,14 @@ def condense_dataframe_by_groups(
             raise ValueError(
                 "DataFrame contains only NA values in column 'duration_qb'."
             )
-        logger.warning(
+        print(
             f"DataFrame contains {missing_duration_mask.sum()} NA values in column 'duration_qb'. "
             f"Those rows will be dropped."
         )
         df = df[~missing_duration_mask]
         group_keys_series = group_keys_series[~missing_duration_mask]
     if group_keys_series.isna().any():
-        logger.warning(
+        print(
             f"The group_keys_series contains {group_keys_series.isna().sum()} NA values. The corresponding rows will "
             f"be dropped."
         )

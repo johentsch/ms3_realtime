@@ -141,8 +141,11 @@ def align_and_maybe_timeline(
             if cadence_mask.sum() > 0:
                 tilia_cadences = aligned_harmonies.loc[cadence_mask].rename(columns=dict(
                     start="time",
-                    cadence="label"
+                    label="annotation_label",
                 ))
+                cadence_keys = (tilia_cadences.relativeroot + "/").fillna("") + tilia_cadences.localkey
+                cadence_labels = tilia_cadences.cadence + " (" + cadence_keys + ")"
+                tilia_cadences["label"] = cadence_labels
                 store_and_report_result(tilia_cadences, store_path, original_path, ".cadences.csv", "TiLiA cadences")
 
     if warp_map:
