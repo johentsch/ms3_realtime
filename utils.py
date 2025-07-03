@@ -3,6 +3,7 @@
 """ This module contains the main audio-to-annotations functionality and helper functions."""
 import os
 import warnings
+from math import floor
 from typing import Optional, Literal, Tuple
 
 import librosa.display
@@ -456,7 +457,7 @@ def align_notes_labels_audio(
     # Prepare annotation format
     df_annotation = corpus_to_df_musical_time(notes_path)
     # Keep track of notes annotations and labels correspondances
-    if labels_path:
+    if not pd.isnull(labels_path):
         df_annotation_extended = align_corpus_notes_and_labels(notes_path, labels_path)
     else:
         df_annotation_extended = None
@@ -467,6 +468,7 @@ def align_notes_labels_audio(
     # Load audio
     audio, _ = librosa.load(audio_path, sr=Fs)
     audio_duration = librosa.get_duration(y=audio, sr=Fs)
+    audio_duration = floor(audio_duration * 100) / 100 # rounding down to
 
     # Estimate tuning deviation
     tuning_offset = estimate_tuning(audio, Fs)
