@@ -281,7 +281,7 @@ def parse_args():
         '-t', '--timeline', help="Output an additional .timeline.csv file. default: False", action='store_true'
     )
     parser.add_argument(
-        '-tla', '--tilia', help="Output an additional .tilia.csv file. default: False", action='store_true'
+        '-tla', '--tilia', help="Output an additional .beatgrid.csv file. default: False", action='store_true'
     )
     parser.add_argument(
         "-w", "--warp_map", help="Output a .quarters2seconds.csv file for future transfer. default: False", action='store_true'

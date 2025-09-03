@@ -119,7 +119,7 @@ For labels visualization purposes, only the `compact` mode is needed when runnin
 
 ## Deriving timelines from aligned notes
 
-This section explains how to generate a `.tilia.csv` file that can be imported into TiLiA,
+This section explains how to generate a `.beatgrid.csv` file that can be imported into TiLiA,
 the [Timeline Annotator](https://tilia-app.com/) software.
 
 What you need:
@@ -163,14 +163,14 @@ processing time.
 
 ### Align notes with recording and derive timeline(s)
 
-You're now set up to create one `.tilia.csv` file per piece that you can import in TiLiA as a beat
+You're now set up to create one `.beatgrid.csv` file per piece that you can import in TiLiA as a beat
 timeline. The command is:
 
     python aligner.py -a audio.mp3 -n piece_unfolded.notes.tsv -tla
 
 * `-a` is the (absolute or relative) path to the audio file
 * `-n` is the (absolute or relative) path to the notes TSV file
-* `-tla` tells the script to create a `.tilia.csv` file
+* `-tla` tells the script to create a `.beatgrid.csv` file
 * optionally, you can pass `-o <target>` to choose where to create the file(s)
 
 If you are batch processing multiple files, replace the arguments `-a` and `-n` with
@@ -185,7 +185,7 @@ If you are batch processing multiple files, replace the arguments `-a` and `-n` 
 * load the audio recording
 * create a beat grid with an arbitrary beat pattern (e.g. `4`) -- (this step will not be necessary in the future)
 * follow the [TiLiA documentation](https://tilia-app.com/help/import) to import the corresponding
-  `.tilia.csv` file as a beat timeline.
+  `.beatgrid.csv` file as a beat timeline.
 * save the file
 
 ## Notes and leads of improvement
